@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.milotnt.mapper.EquipmentMapper">
+
+    <select id="findAll" resultType="equipment">
+        SELECt *
+        FROM traffic_data.equipment
+    </select>
+
+    <delete id="deleteByEquipmentId" parameterType="java.lang.Integer">
+        DELETE
+        FROM etraffic_data.quipment
+        WHERE equipment_id = #{equipmentId}
+    </delete>
+
+    <insert id="insertEquipment" parameterType="equipment">
+        INSERT INTO traffic_data.equipment (equipment_id, equipment_name, equipment_location, equipment_status, equipment_message)
+        VALUES (#{equipmentId}, #{equipmentName}, #{equipmentLocation}, #{equipmentStatus}, #{equipmentMessage})
+    </insert>
+
+    <update id="updateEquipmentByEquipmentId" parameterType="equipment">
+        UPDATE traffic_data.equipment
+        SET equipment_id       = #{equipmentId},
+            equipment_name     = #{equipmentName},
+            equipment_location = #{equipmentLocation},
+            equipment_status   = #{equipmentStatus},
+            equipment_message  = #{equipmentMessage}
+        WHERE equipment_id = #{equipmentId}
+    </update>
+
+    <select id="selectByEquipmentId" parameterType="java.lang.Integer" resultType="equipment">
+        SELECT *
+        FROM traffic_data.equipment
+        WHERE equipment_id = #{equipmentId}
+    </select>
+
+    <select id="selectTotalCount" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM traffic_data.equipment
+    </select>
+
+</mapper>
