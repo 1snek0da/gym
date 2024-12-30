@@ -11,7 +11,7 @@
 
     <delete id="deleteByEquipmentId" parameterType="java.lang.Integer">
         DELETE
-        FROM etraffic_data.quipment
+        FROM traffic_data.quipment
         WHERE equipment_id = #{equipmentId}
     </delete>
 
